@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringDataMongodbValidationApplication {
+public class MyApp {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringDataMongodbValidationApplication.class, args);
+		SpringApplication.run(MyApp.class, args);
 	}
 
 }
