@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
-import org.springframework.data.mongodb.core.mapping.event.ValidatingMongoEventListener;
+import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
@@ -16,6 +16,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @DataMongoTest
 @ExtendWith(SpringExtension.class)
+@Import(MongoValidationConfig.class)
 class MongoValidationDataMongoTest {
 
     @Autowired
@@ -33,10 +34,6 @@ class MongoValidationDataMongoTest {
         @Bean
         public LocalValidatorFactoryBean localValidatorFactoryBean() {
             return new LocalValidatorFactoryBean();
-        }
-        @Bean
-        public ValidatingMongoEventListener validatingMongoEventListener(LocalValidatorFactoryBean localValidatorFactoryBean) {
-            return new ValidatingMongoEventListener(localValidatorFactoryBean);
         }
     }
 }
